@@ -1,9 +1,361 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Zernish Nazir</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Development | Zernish Nazir</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0f1c;
+            color: #e5e7eb;
+            line-height: 1.7;
+        }
+
+        nav {
+            padding: 20px 8%;
+            border-bottom: 1px solid #1f2937;
+            background: #0a0f1c;
+        }
+
+        nav a {
+            color: #9ca3af;
+            text-decoration: none;
+            margin-right: 24px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .hero {
+            padding: 90px 0 60px;
+        }
+
+        .label {
+            color: #60a5fa;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero p {
+            max-width: 750px;
+            color: #9ca3af;
+            font-size: 18px;
+        }
+
+        section {
+            padding: 45px 0;
+        }
+
+        h2 {
+            font-size: 30px;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .card h3 {
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #9ca3af;
+        }
+
+        .tags {
+            margin-top: 18px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #172033;
+            color: #93c5fd;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin: 4px 4px 0 0;
+        }
+
+        .project {
+            margin-top: 20px;
+        }
+
+        footer {
+            border-top: 1px solid #1f2937;
+            margin-top: 50px;
+            padding: 30px 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 38px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: inline-block;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Coming Soon</h1>
+
+<nav>
+    <div class="container">
+        <a href="index.html">Home</a>
+        <a href="cybersecurity.html">Cybersecurity</a>
+        <a href="ai.html">AI & ML</a>
+        <a href="software.html">Software</a>
+        <a href="infrastructure.html">Infrastructure</a>
+        <a href="experience.html">Experience</a>
+        <a href="hackathons.html">Hackathons</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="hero">
+        <div class="label">Software Development</div>
+        <h1>Building Software & Secure Systems</h1>
+        <p>
+            Experience developing full-stack applications, systems software,
+            databases and software engineering projects using multiple
+            programming languages and modern development tools.
+        </p>
+    </div>
+
+    <section>
+        <h2>Core Areas</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Full-Stack Development</h3>
+                <p>
+                    Experience developing applications across frontend,
+                    backend, authentication, databases, APIs and deployment.
+                </p>
+                <div class="tags">
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Firebase</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">REST APIs</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Python</h3>
+                <p>
+                    Used Python for backend development, machine learning,
+                    automation, cybersecurity projects and data analysis.
+                </p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Jupyter</span>
+                    <span class="tag">Automation</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>C & Systems Programming</h3>
+                <p>
+                    Developed C programs involving structured programming,
+                    memory management, data structures and Unix-based
+                    programming concepts.
+                </p>
+                <div class="tags">
+                    <span class="tag">C89</span>
+                    <span class="tag">Unix</span>
+                    <span class="tag">Systems Programming</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Java</h3>
+                <p>
+                    Experience with Java programming and object-oriented
+                    software development through university projects and
+                    practical programming work.
+                </p>
+                <div class="tags">
+                    <span class="tag">Java</span>
+                    <span class="tag">OOP</span>
+                    <span class="tag">Software Design</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Data Structures & Algorithms</h3>
+                <p>
+                    Practical experience implementing and working with
+                    fundamental data structures and algorithmic problem-solving
+                    techniques.
+                </p>
+                <div class="tags">
+                    <span class="tag">Algorithms</span>
+                    <span class="tag">Data Structures</span>
+                    <span class="tag">Problem Solving</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Databases</h3>
+                <p>
+                    Experience designing relational databases, writing SQL
+                    queries and building applications that interact with
+                    structured data.
+                </p>
+                <div class="tags">
+                    <span class="tag">SQL</span>
+                    <span class="tag">Database Design</span>
+                    <span class="tag">Firebase</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <h2>Featured Software Projects</h2>
+
+        <div class="card project">
+            <h3>TeamTrack — AI-Assisted Project Management Platform</h3>
+            <p>
+                A full-stack project management platform developed using
+                FastAPI, Firebase, Docker and Ollama. The project integrates
+                authentication, databases, role-based access control, APIs
+                and AI-assisted functionality.
+            </p>
+            <div class="tags">
+                <span class="tag">FastAPI</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Ollama</span>
+                <span class="tag">RBAC</span>
+            </div>
+        </div>
+
+        <div class="card project">
+            <h3>Snake Game in C</h3>
+            <p>
+                Developed a Snake game in C as part of Unix and C programming
+                coursework, followed by an extended version involving
+                structures and additional gameplay functionality.
+            </p>
+            <div class="tags">
+                <span class="tag">C89</span>
+                <span class="tag">Unix</span>
+                <span class="tag">Structs</span>
+                <span class="tag">Programming</span>
+            </div>
+        </div>
+
+        <div class="card project">
+            <h3>F1 Database Project</h3>
+            <p>
+                Designed and implemented a relational database project using
+                SQL, including database structure, queries and data retrieval
+                for an F1-themed dataset.
+            </p>
+            <div class="tags">
+                <span class="tag">SQL</span>
+                <span class="tag">Database Design</span>
+                <span class="tag">Queries</span>
+            </div>
+        </div>
+
+        <div class="card project">
+            <h3>Operating Systems Projects</h3>
+            <p>
+                Completed programming projects exploring operating system
+                concepts including processes, multiprocessing and Unix-based
+                system programming.
+            </p>
+            <div class="tags">
+                <span class="tag">C</span>
+                <span class="tag">Processes</span>
+                <span class="tag">Unix</span>
+                <span class="tag">Operating Systems</span>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <h2>Development Toolkit</h2>
+
+        <div class="card">
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">C</span>
+                <span class="tag">Java</span>
+                <span class="tag">Bash</span>
+                <span class="tag">SQL</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Git</span>
+                <span class="tag">REST APIs</span>
+                <span class="tag">Data Structures</span>
+                <span class="tag">Algorithms</span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        © 2026 Zernish Nazir · Software Development
+    </div>
+</footer>
+
 </body>
 </html>
