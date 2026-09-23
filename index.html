@@ -217,42 +217,45 @@
             gap: 20px;
         }
 
-        .work-card {
-            min-height: 300px;
+.work-card {
+    min-height: 300px;
 
-            padding: 30px;
+    padding: 30px;
 
-            background: #0d0d0d;
+    background: #0d0d0d;
 
-            border: 1px solid #202020;
-            border-radius: 10px;
+    border: 1px solid #202020;
+    border-radius: 10px;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-            transition: 0.25s;
-        }
+    transition: 0.25s;
 
-        .work-card:hover {
-            transform: translateY(-5px);
-            border-color: #444;
-        }
+    color: inherit;
+    text-decoration: none;
+}
 
-        .work-number {
-            color: #555;
-            font-size: 13px;
-        }
+.work-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
 
-        .work-card h3 {
-            font-size: 25px;
-            margin: 20px 0 10px;
-        }
+.work-number {
+    color: #555;
+    font-size: 13px;
+}
 
-        .work-card p {
-            color: #777;
-            font-size: 15px;
-        }
+.work-card h3 {
+    font-size: 25px;
+    margin: 20px 0 10px;
+}
+
+.work-card p {
+    color: #777;
+    font-size: 15px;
+}
 
         .tags {
             display: flex;
@@ -503,32 +506,108 @@
         </p>
 
 
-        <div class="work-grid">
+<div class="work-grid">
+
+    <a href="software.html" class="work-card">
+
+        <div>
+            <div class="work-number">01</div>
+
+            <h3>
+                TeamTrack
+            </h3>
+
+            <p>
+                AI-assisted project management platform
+                developed as a full-stack capstone project.
+            </p>
+        </div>
+
+        <div class="tags">
+            <span class="tag">FastAPI</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Ollama</span>
+        </div>
+
+    </a>
 
 
-            <div class="work-card">
+    <a href="cybersecurity.html" class="work-card">
 
-                <div>
-                    <div class="work-number">01</div>
+        <div>
+            <div class="work-number">02</div>
 
-                    <h3>
-                        TeamTrack
-                    </h3>
+            <h3>
+                Penetration Testing
+            </h3>
 
-                    <p>
-                        AI-assisted project management platform
-                        developed as a full-stack capstone project.
-                    </p>
-                </div>
+            <p>
+                Practical security labs covering
+                reconnaissance, exploitation and
+                privilege escalation.
+            </p>
+        </div>
 
-                <div class="tags">
-                    <span class="tag">FastAPI</span>
-                    <span class="tag">Firebase</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Ollama</span>
-                </div>
+        <div class="tags">
+            <span class="tag">Burp Suite</span>
+            <span class="tag">Metasploit</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Windows</span>
+        </div>
 
-            </div>
+    </a>
+
+
+    <a href="cybersecurity.html" class="work-card">
+
+        <div>
+            <div class="work-number">03</div>
+
+            <h3>
+                Network Security
+            </h3>
+
+            <p>
+                Network monitoring and intrusion detection
+                experiments using practical security tools.
+            </p>
+        </div>
+
+        <div class="tags">
+            <span class="tag">Wireshark</span>
+            <span class="tag">Snort</span>
+            <span class="tag">Security Onion</span>
+        </div>
+
+    </a>
+
+
+    <a href="ai.html" class="work-card">
+
+        <div>
+            <div class="work-number">04</div>
+
+            <h3>
+                Machine Learning
+            </h3>
+
+            <p>
+                Machine learning experiments involving
+                regression, neural networks and
+                model evaluation.
+            </p>
+        </div>
+
+        <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Jupyter</span>
+            <span class="tag">ML</span>
+        </div>
+
+    </a>
+
+</div>
 
 
             <div class="work-card">
