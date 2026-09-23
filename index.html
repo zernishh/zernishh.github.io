@@ -6,6 +6,8 @@
 
     <title>Zernish Nazir | Cybersecurity Portfolio</title>
 
+    <meta name="description" content="Zernish Nazir — Cybersecurity, Software Engineering and AI/ML portfolio.">
+
     <style>
         * {
             margin: 0;
@@ -18,150 +20,846 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #0a0a0a;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #070707;
             color: #f5f5f5;
+            line-height: 1.6;
         }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
 
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            padding: 20px 50px;
-            background: rgba(10, 10, 10, 0.9);
-            border-bottom: 1px solid #222;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            background: rgba(7, 7, 7, 0.85);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #1c1c1c;
+
             z-index: 1000;
         }
 
-        nav ul {
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #777;
+        }
+
+        .nav-links {
             display: flex;
-            justify-content: center;
-            gap: 30px;
+            gap: 28px;
             list-style: none;
         }
 
-        nav a {
-            color: #aaa;
-            text-decoration: none;
-            font-size: 14px;
+        .nav-links a {
+            color: #999;
+            font-size: 13px;
+            transition: 0.2s;
         }
 
-        nav a:hover {
-            color: white;
+        .nav-links a:hover {
+            color: #fff;
         }
 
-        section {
-            min-height: 100vh;
-            padding: 120px 10%;
-            border-bottom: 1px solid #222;
-        }
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
+            min-height: 100vh;
+
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            align-items: center;
+
+            padding: 120px 10%;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            background: #151515;
+
+            border-radius: 50%;
+
+            filter: blur(100px);
+
+            top: 10%;
+            right: -150px;
+
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            color: #888;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
         }
 
         .hero h1 {
-            font-size: 70px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 22px;
-            color: #aaa;
-            max-width: 700px;
-        }
-
-        .section-title {
-            font-size: 45px;
+            font-size: clamp(55px, 9vw, 110px);
+            line-height: 0.95;
+            letter-spacing: -5px;
             margin-bottom: 30px;
         }
 
-        .placeholder {
+        .hero h1 span {
             color: #777;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            color: #999;
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 13px 22px;
+
+            border: 1px solid #333;
+            border-radius: 6px;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .button.primary {
+            background: #f5f5f5;
+            color: #080808;
+            border-color: #f5f5f5;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            border-color: #777;
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            padding: 120px 10%;
+            border-top: 1px solid #171717;
+        }
+
+        .section-label {
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: clamp(38px, 5vw, 65px);
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            color: #888;
+            max-width: 650px;
+            margin-bottom: 50px;
+        }
+
+        /* =========================
+           FEATURED WORK
+        ========================= */
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .work-card {
+            min-height: 300px;
+
+            padding: 30px;
+
+            background: #0d0d0d;
+
+            border: 1px solid #202020;
+            border-radius: 10px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            transition: 0.25s;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            border-color: #444;
+        }
+
+        .work-number {
+            color: #555;
+            font-size: 13px;
+        }
+
+        .work-card h3 {
+            font-size: 25px;
+            margin: 20px 0 10px;
+        }
+
+        .work-card p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .tag {
+            padding: 5px 9px;
+
+            border: 1px solid #292929;
+            border-radius: 4px;
+
+            color: #777;
+            font-size: 11px;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-box {
+            padding: 25px;
+
+            background: #0d0d0d;
+
+            border: 1px solid #202020;
+            border-radius: 8px;
+        }
+
+        .skill-box h3 {
+            margin-bottom: 12px;
             font-size: 18px;
         }
 
-        footer {
-            padding: 30px;
-            text-align: center;
+        .skill-box p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* =========================
+           EXPERIENCE
+        ========================= */
+
+        .experience {
+            border-left: 1px solid #333;
+            padding-left: 30px;
+            max-width: 850px;
+        }
+
+        .experience-date {
             color: #666;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .experience h3 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .experience-company {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .experience p {
+            color: #777;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-text {
+            max-width: 800px;
+            font-size: 20px;
+            color: #888;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 40px 10%;
+
+            border-top: 1px solid #171717;
+
+            color: #555;
+
+            font-size: 13px;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 7%;
+            }
+
+            section {
+                padding: 90px 7%;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 
+
 <body>
 
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
     <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#cybersecurity">Cybersecurity</a></li>
-            <li><a href="#ai">AI & ML</a></li>
-            <li><a href="#software">Software</a></li>
-            <li><a href="#infrastructure">Infrastructure</a></li>
+
+        <a href="#home" class="logo">
+            ZERNISH<span>.</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="#hackathons">Hackathons</a></li>
-            <li><a href="#certifications">Certifications</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+
     </nav>
 
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section id="home" class="hero">
-        <h1>Zernish Nazir</h1>
-        <p>
-            Cybersecurity • Software Engineering • AI/ML
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                Cybersecurity • Software • AI
+            </div>
+
+            <h1>
+                Zernish<br>
+                <span>Shahid Nazir</span>
+            </h1>
+
+            <p class="hero-description">
+                Cybersecurity graduate building secure systems,
+                exploring offensive security, and developing
+                software with AI and modern infrastructure.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#work" class="button primary">
+                    Explore My Work
+                </a>
+
+                <a href="https://github.com/zernishh"
+                   target="_blank"
+                   class="button">
+                    GitHub
+                </a>
+
+                <a href="https://www.linkedin.com/"
+                   target="_blank"
+                   class="button">
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURED WORK
+    ========================= -->
+
+    <section id="work">
+
+        <div class="section-label">
+            Selected Work
+        </div>
+
+        <h2 class="section-title">
+            What I've Built
+        </h2>
+
+        <p class="section-description">
+            A collection of projects across cybersecurity,
+            software engineering, artificial intelligence,
+            networking and infrastructure.
         </p>
+
+
+        <div class="work-grid">
+
+
+            <div class="work-card">
+
+                <div>
+                    <div class="work-number">01</div>
+
+                    <h3>
+                        TeamTrack
+                    </h3>
+
+                    <p>
+                        AI-assisted project management platform
+                        developed as a full-stack capstone project.
+                    </p>
+                </div>
+
+                <div class="tags">
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Firebase</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Ollama</span>
+                </div>
+
+            </div>
+
+
+            <div class="work-card">
+
+                <div>
+                    <div class="work-number">02</div>
+
+                    <h3>
+                        Penetration Testing
+                    </h3>
+
+                    <p>
+                        Practical security labs covering
+                        reconnaissance, exploitation and
+                        privilege escalation.
+                    </p>
+                </div>
+
+                <div class="tags">
+                    <span class="tag">Burp Suite</span>
+                    <span class="tag">Metasploit</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Windows</span>
+                </div>
+
+            </div>
+
+
+            <div class="work-card">
+
+                <div>
+                    <div class="work-number">03</div>
+
+                    <h3>
+                        Network Security
+                    </h3>
+
+                    <p>
+                        Network monitoring and intrusion detection
+                        experiments using practical security tools.
+                    </p>
+                </div>
+
+                <div class="tags">
+                    <span class="tag">Wireshark</span>
+                    <span class="tag">Snort</span>
+                    <span class="tag">Security Onion</span>
+                </div>
+
+            </div>
+
+
+            <div class="work-card">
+
+                <div>
+                    <div class="work-number">04</div>
+
+                    <h3>
+                        Machine Learning
+                    </h3>
+
+                    <p>
+                        Machine learning experiments involving
+                        regression, neural networks and
+                        model evaluation.
+                    </p>
+                </div>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Jupyter</span>
+                    <span class="tag">ML</span>
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <section id="cybersecurity">
-        <h2 class="section-title">Cybersecurity</h2>
-        <p class="placeholder">Penetration Testing • Network Security • Incident Response • Cryptography • System Hardening</p>
+
+    <!-- =========================
+         SKILLS
+    ========================= -->
+
+    <section id="skills">
+
+        <div class="section-label">
+            Technical Skills
+        </div>
+
+        <h2 class="section-title">
+            Skills
+        </h2>
+
+        <div class="skills-grid">
+
+
+            <div class="skill-box">
+
+                <h3>
+                    Cybersecurity
+                </h3>
+
+                <p>
+                    Penetration Testing<br>
+                    Vulnerability Assessment<br>
+                    OWASP Top 10<br>
+                    Network Security<br>
+                    Incident Response<br>
+                    System Hardening
+                </p>
+
+            </div>
+
+
+            <div class="skill-box">
+
+                <h3>
+                    Development
+                </h3>
+
+                <p>
+                    Python<br>
+                    C<br>
+                    Java<br>
+                    Bash<br>
+                    SQL<br>
+                    Git
+                </p>
+
+            </div>
+
+
+            <div class="skill-box">
+
+                <h3>
+                    Infrastructure
+                </h3>
+
+                <p>
+                    Linux<br>
+                    Windows<br>
+                    Cisco Networking<br>
+                    Docker<br>
+                    Virtualization<br>
+                    AWS
+                </p>
+
+            </div>
+
+
+            <div class="skill-box">
+
+                <h3>
+                    Security Tools
+                </h3>
+
+                <p>
+                    Burp Suite<br>
+                    Wireshark<br>
+                    Metasploit<br>
+                    Splunk<br>
+                    Snort<br>
+                    Security Onion
+                </p>
+
+            </div>
+
+
+            <div class="skill-box">
+
+                <h3>
+                    AI & Machine Learning
+                </h3>
+
+                <p>
+                    Machine Learning<br>
+                    Regression<br>
+                    Neural Networks<br>
+                    Model Evaluation<br>
+                    Generative AI
+                </p>
+
+            </div>
+
+
+            <div class="skill-box">
+
+                <h3>
+                    Cloud & Platforms
+                </h3>
+
+                <p>
+                    AWS<br>
+                    Firebase<br>
+                    Docker<br>
+                    Ollama<br>
+                    GitHub
+                </p>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <section id="ai">
-        <h2 class="section-title">AI & Machine Learning</h2>
-        <p class="placeholder">Machine Learning • AI Research • Generative AI</p>
-    </section>
 
-    <section id="software">
-        <h2 class="section-title">Software Development</h2>
-        <p class="placeholder">Full-Stack • Python • C • Java • Databases • Algorithms</p>
-    </section>
-
-    <section id="infrastructure">
-        <h2 class="section-title">IT & Infrastructure</h2>
-        <p class="placeholder">Networking • Cloud • Linux • Windows • Docker</p>
-    </section>
+    <!-- =========================
+         EXPERIENCE
+    ========================= -->
 
     <section id="experience">
-        <h2 class="section-title">Experience</h2>
-        <p class="placeholder">e& UAE — Technology & IT Intern</p>
+
+        <div class="section-label">
+            Experience
+        </div>
+
+        <h2 class="section-title">
+            Experience
+        </h2>
+
+
+        <div class="experience">
+
+            <div class="experience-date">
+                June — August 2026
+            </div>
+
+            <h3>
+                Technology & IT Intern
+            </h3>
+
+            <div class="experience-company">
+                e& UAE — Core Network & Platforms
+            </div>
+
+            <p>
+                Worked across Wi-Fi Core, networking, cloud,
+                security and operations. Exposure included
+                requirements analysis, solution design,
+                security reviews, testing, vulnerability
+                management, CIS hardening, firewall change
+                control, security assessments and network
+                infrastructure validation.
+            </p>
+
+        </div>
+
     </section>
 
-    <section id="hackathons">
-        <h2 class="section-title">Hackathons</h2>
-        <p class="placeholder">Alibaba Cloud AI Hackathon • Cybersecurity & Quantum Computing Hackathon</p>
-    </section>
 
-    <section id="certifications">
-        <h2 class="section-title">Certifications</h2>
-        <p class="placeholder">Cisco • AWS • TryHackMe</p>
-    </section>
+    <!-- =========================
+         ABOUT
+    ========================= -->
 
     <section id="about">
-        <h2 class="section-title">About</h2>
-        <p class="placeholder">About Zernish</p>
+
+        <div class="section-label">
+            About
+        </div>
+
+        <h2 class="section-title">
+            About Me
+        </h2>
+
+        <p class="about-text">
+            I am a Cybersecurity graduate with interests spanning
+            offensive security, network security, secure software
+            development, artificial intelligence and cloud
+            infrastructure. I enjoy understanding how systems
+            work, identifying weaknesses and building practical
+            technical solutions.
+        </p>
+
     </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
 
     <section id="contact">
-        <h2 class="section-title">Contact</h2>
-        <p class="placeholder">Email • GitHub • LinkedIn</p>
+
+        <div class="section-label">
+            Contact
+        </div>
+
+        <h2 class="section-title">
+            Let's Connect.
+        </h2>
+
+        <p class="section-description">
+            Interested in cybersecurity, technology or
+            collaboration? Get in touch.
+        </p>
+
+
+        <div class="contact-links">
+
+            <a href="mailto:zernishnazir@gmail.com"
+               class="button primary">
+                Email Me
+            </a>
+
+            <a href="https://github.com/zernishh"
+               target="_blank"
+               class="button">
+                GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/"
+               target="_blank"
+               class="button">
+                LinkedIn
+            </a>
+
+        </div>
+
     </section>
 
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
     <footer>
-        © 2026 Zernish Nazir
+
+        <div>
+            © 2026 Zernish Nazir
+        </div>
+
+        <div>
+            Cybersecurity • Software • AI
+        </div>
+
     </footer>
 
 </body>
