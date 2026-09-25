@@ -116,6 +116,36 @@
             margin-top: 20px;
         }
 
+        .project-details {
+            margin-top: 16px;
+            color: #cbd5e1;
+        }
+
+        .project-details p + p {
+            margin-top: 8px;
+        }
+
+        .project-features {
+            margin: 16px 0 0 20px;
+            color: #9ca3af;
+        }
+
+        .project-features li + li {
+            margin-top: 6px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            color: #ffffff;
+        }
+
         footer {
             border-top: 1px solid #1f2937;
             margin-top: 50px;
@@ -273,13 +303,28 @@
                 authentication, databases, role-based access control, APIs
                 and AI-assisted functionality.
             </p>
+            <div class="project-details">
+                <p><strong>Role:</strong> Full-stack contributor</p>
+                <p><strong>Contribution:</strong> Worked across the web application and API to deliver authenticated, organization-based collaboration workflows.</p>
+            </div>
+            <ul class="project-features">
+                <li>Projects, task boards, progress tracking, and project-level analytics</li>
+                <li>Team workspaces, invitations, role-based access, and chat</li>
+                <li>Time logging and reporting for projects and tasks</li>
+                <li>Context-aware AI assistance powered by Ollama</li>
+            </ul>
             <div class="tags">
+                <span class="tag">Nuxt 3</span>
+                <span class="tag">Vue 3</span>
                 <span class="tag">FastAPI</span>
+                <span class="tag">PostgreSQL</span>
                 <span class="tag">Firebase</span>
                 <span class="tag">Docker</span>
                 <span class="tag">Ollama</span>
                 <span class="tag">RBAC</span>
             </div>
+            <a class="project-link" href="teamtrack.html">View project details &amp; screenshots &rarr;</a>
+            <a class="project-link" href="https://github.com/zernishh/TeamTrack" target="_blank" rel="noopener noreferrer">View the TeamTrack repository &rarr;</a>
         </div>
 
         <div class="card project">

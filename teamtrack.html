@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TeamTrack is a collaborative full-stack project-management platform by Zernish Nazir.">
+    <title>TeamTrack | Zernish Nazir</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0f1c;
+            color: #e5e7eb;
+            line-height: 1.7;
+        }
+
+        nav {
+            padding: 20px 8%;
+            border-bottom: 1px solid #1f2937;
+            background: #0a0f1c;
+        }
+
+        nav a {
+            color: #9ca3af;
+            text-decoration: none;
+            margin-right: 24px;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: #ffffff;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .hero {
+            padding: 90px 0 55px;
+        }
+
+        .label {
+            color: #60a5fa;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #ffffff;
+        }
+
+        h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            max-width: 780px;
+            color: #9ca3af;
+            font-size: 18px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-block;
+            border: 1px solid #60a5fa;
+            border-radius: 7px;
+            padding: 10px 16px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button.primary {
+            background: #2563eb;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: #1d4ed8;
+        }
+
+        section {
+            padding: 42px 0;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p,
+        .card li {
+            color: #9ca3af;
+        }
+
+        .card ul {
+            margin: 12px 0 0 20px;
+        }
+
+        .card li + li {
+            margin-top: 7px;
+        }
+
+        .tags {
+            margin-top: 18px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #172033;
+            color: #93c5fd;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin: 4px 4px 0 0;
+        }
+
+        .carousel {
+            position: relative;
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide.is-active {
+            display: block;
+        }
+
+        .slide img {
+            display: block;
+            width: 100%;
+            max-height: 620px;
+            object-fit: contain;
+            background: #050914;
+        }
+
+        figcaption {
+            padding: 18px 72px;
+            color: #cbd5e1;
+            text-align: center;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border: 1px solid #334155;
+            border-radius: 50%;
+            background: rgba(10, 15, 28, 0.9);
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .carousel-control:hover,
+        .carousel-control:focus-visible {
+            background: #2563eb;
+            outline: 2px solid #93c5fd;
+            outline-offset: 2px;
+        }
+
+        .previous {
+            left: 18px;
+        }
+
+        .next {
+            right: 18px;
+        }
+
+        .slide-counter {
+            color: #9ca3af;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 14px;
+        }
+
+        footer {
+            border-top: 1px solid #1f2937;
+            margin-top: 50px;
+            padding: 30px 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 38px;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: inline-block;
+                margin-bottom: 10px;
+            }
+
+            figcaption {
+                padding: 15px 60px;
+            }
+
+            .carousel-control {
+                width: 38px;
+                height: 38px;
+                font-size: 24px;
+            }
+
+            .previous {
+                left: 10px;
+            }
+
+            .next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cybersecurity.html">Cybersecurity</a>
+        <a href="ai.html">AI &amp; ML</a>
+        <a href="software.html">Software</a>
+        <a href="infrastructure.html">Infrastructure</a>
+        <a href="experience.html">Experience</a>
+        <a href="hackathons.html">Hackathons</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <div class="label">Featured full-stack project</div>
+            <h1>TeamTrack</h1>
+            <p>
+                A collaborative productivity platform for managing projects, tasks,
+                time, and team communication in one place, with AI-powered project assistance.
+            </p>
+            <div class="actions">
+                <a class="button primary" href="https://github.com/zernishh/TeamTrack" target="_blank" rel="noopener noreferrer">View code on GitHub</a>
+                <a class="button" href="software.html">Back to software projects</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Project Overview</h2>
+            <div class="overview-grid">
+                <article class="card">
+                    <h3>My Role</h3>
+                    <p>
+                        Full-stack contributor, working across the application interface
+                        and API to support secure, organization-based collaboration workflows.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3>What TeamTrack Does</h3>
+                    <ul>
+                        <li>Organizes projects, tasks, due dates, and progress</li>
+                        <li>Supports team workspaces, invitations, roles, and chat</li>
+                        <li>Tracks time and surfaces project analytics</li>
+                        <li>Uses AI to summarize and answer questions about project work</li>
+                    </ul>
+                </article>
+            </div>
+            <div class="tags" aria-label="Technology stack">
+                <span class="tag">Nuxt 3</span>
+                <span class="tag">Vue 3</span>
+                <span class="tag">Tailwind CSS</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Firebase Auth</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Ollama</span>
+            </div>
+        </section>
+
+        <section aria-labelledby="screenshots-title">
+            <h2 id="screenshots-title">Interface Screenshots</h2>
+            <div class="carousel" id="teamtrack-carousel" tabindex="0" aria-roledescription="carousel" aria-label="TeamTrack interface screenshots">
+                <figure class="slide is-active">
+                    <img src="assets/images/screenshots/title_screenshot.jpeg" alt="TeamTrack welcome screen" fetchpriority="high">
+                    <figcaption>TeamTrack welcome screen</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/hom_page.jpeg" alt="TeamTrack home page" loading="lazy">
+                    <figcaption>Home page</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/preview_page.jpeg" alt="TeamTrack project preview page" loading="lazy">
+                    <figcaption>Project preview page</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/dashboard.jpeg" alt="TeamTrack dashboard" loading="lazy">
+                    <figcaption>Dashboard overview</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/your_projects_page.jpeg" alt="TeamTrack projects page" loading="lazy">
+                    <figcaption>Your projects</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/viewing_specific_project.jpeg" alt="A specific project in TeamTrack" loading="lazy">
+                    <figcaption>Viewing a specific project</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/tasks_page.jpeg" alt="TeamTrack task management page" loading="lazy">
+                    <figcaption>Task management</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/team_members.jpeg" alt="TeamTrack team members page" loading="lazy">
+                    <figcaption>Team members and collaboration</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/team_messages.jpeg" alt="TeamTrack team messages page" loading="lazy">
+                    <figcaption>Team messaging</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/chat_documents.jpeg" alt="TeamTrack chat documents interface" loading="lazy">
+                    <figcaption>Chat and shared documents</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/teamtrack_AI.jpeg" alt="TeamTrack AI assistant" loading="lazy">
+                    <figcaption>AI project assistant</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/generated_team_time_summary.jpeg" alt="AI-generated team time summary" loading="lazy">
+                    <figcaption>AI-generated team time summary</figcaption>
+                </figure>
+                <figure class="slide">
+                    <img src="assets/images/screenshots/generated_time_entries_summary.jpeg" alt="AI-generated time-entry summary" loading="lazy">
+                    <figcaption>AI-generated time-entry summary</figcaption>
+                </figure>
+                <button class="carousel-control previous" type="button" aria-label="Show previous screenshot">&#8249;</button>
+                <button class="carousel-control next" type="button" aria-label="Show next screenshot">&#8250;</button>
+            </div>
+            <p class="slide-counter" aria-live="polite"><span id="current-slide">1</span> of <span id="total-slides">13</span></p>
+        </section>
+    </main>
+
+    <footer class="container">
+        &copy; 2026 Zernish Nazir. All rights reserved.
+    </footer>
+
+    <script>
+        const carousel = document.querySelector('#teamtrack-carousel');
+        const slides = Array.from(carousel.querySelectorAll('.slide'));
+        const previousButton = carousel.querySelector('.previous');
+        const nextButton = carousel.querySelector('.next');
+        const currentSlide = document.querySelector('#current-slide');
+        const totalSlides = document.querySelector('#total-slides');
+        let activeIndex = 0;
+
+        totalSlides.textContent = slides.length;
+
+        function showSlide(index) {
+            activeIndex = (index + slides.length) % slides.length;
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.toggle('is-active', slideIndex === activeIndex);
+            });
+            currentSlide.textContent = activeIndex + 1;
+        }
+
+        previousButton.addEventListener('click', () => showSlide(activeIndex - 1));
+        nextButton.addEventListener('click', () => showSlide(activeIndex + 1));
+
+        carousel.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') showSlide(activeIndex - 1);
+            if (event.key === 'ArrowRight') showSlide(activeIndex + 1);
+        });
+    </script>
+</body>
+</html>

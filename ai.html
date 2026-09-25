@@ -121,6 +121,36 @@
             color: #ffffff;
         }
 
+        .project-details {
+            margin-top: 16px;
+            color: #cbd5e1;
+        }
+
+        .project-details p + p {
+            margin-top: 8px;
+        }
+
+        .project-features {
+            margin: 16px 0 0 20px;
+            color: #9ca3af;
+        }
+
+        .project-features li + li {
+            margin-top: 6px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            color: #ffffff;
+        }
+
         footer {
             border-top: 1px solid #1f2937;
             margin-top: 50px;
@@ -261,18 +291,32 @@
         </div>
 
         <div class="card project">
-            <h3>TeamTrack AI Integration</h3>
+            <h3>TeamTrack AI Assistant</h3>
             <p>
-                Integrated AI capabilities into TeamTrack, a full-stack project
-                management platform, using local AI models to support
-                intelligent functionality within the application.
+                An AI assistant integrated into TeamTrack to help teams
+                understand project activity and ask questions about their
+                organization&rsquo;s work.
             </p>
+            <div class="project-details">
+                <p><strong>Role:</strong> Full-stack contributor</p>
+                <p><strong>Implementation:</strong> Integrated an Ollama-backed AI service with authenticated FastAPI endpoints and a Nuxt dashboard interface.</p>
+            </div>
+            <ul class="project-features">
+                <li>Answers are grounded in the signed-in organization&rsquo;s projects and tasks</li>
+                <li>Dashboard summaries surface project, task, and workload context</li>
+                <li>Short-lived caching reduces repeated requests to the AI provider</li>
+            </ul>
             <div class="tags">
+                <span class="tag">Nuxt 3</span>
+                <span class="tag">Vue 3</span>
                 <span class="tag">Ollama</span>
                 <span class="tag">FastAPI</span>
                 <span class="tag">Python</span>
-                <span class="tag">AI</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Firebase Auth</span>
             </div>
+            <a class="project-link" href="teamtrack.html">View project details &amp; screenshots &rarr;</a>
+            <a class="project-link" href="https://github.com/zernishh/TeamTrack" target="_blank" rel="noopener noreferrer">View the TeamTrack repository &rarr;</a>
         </div>
 
         <div class="card project">
