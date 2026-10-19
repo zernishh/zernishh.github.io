@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Controlled penetration-testing lab case studies by Zernish Nazir across Windows and Linux environments.">
+    <title>Penetration Testing Lab Series | Zernish Nazir</title>
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #0a0f1c;
+            --surface: #111827;
+            --surface-raised: #141e30;
+            --border: #263348;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --blue: #60a5fa;
+            --blue-soft: #93c5fd;
+            --green: #6ee7b7;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; }
+
+        .container {
+            width: min(1120px, 84%);
+            margin: 0 auto;
+        }
+
+        nav {
+            border-bottom: 1px solid #1f2937;
+            background: rgba(10, 15, 28, 0.96);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 24px;
+            padding: 20px 0;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav a[aria-current="page"] { color: #fff; }
+
+        .hero {
+            padding: 92px 0 52px;
+            background: radial-gradient(circle at 85% 0%, rgba(37, 99, 235, 0.19), transparent 36%);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 18px rgba(110, 231, 183, 0.8);
+        }
+
+        h1, h2, h3, p { margin-top: 0; }
+
+        h1 {
+            max-width: 800px;
+            margin: 16px 0 18px;
+            color: #fff;
+            font-size: clamp(2.5rem, 6vw, 4.6rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p {
+            max-width: 770px;
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .notice {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            margin-top: 32px;
+            max-width: 810px;
+            padding: 16px 18px;
+            border: 1px solid rgba(96, 165, 250, 0.35);
+            border-radius: 12px;
+            background: rgba(30, 58, 138, 0.2);
+            color: var(--blue-soft);
+            font-size: 0.94rem;
+        }
+
+        .notice strong { color: #fff; }
+
+        main { padding: 12px 0 76px; }
+
+        section { padding: 48px 0; }
+
+        .section-label {
+            margin-bottom: 8px;
+            color: var(--blue);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin-bottom: 14px;
+            color: #fff;
+            font-size: clamp(1.75rem, 3vw, 2.3rem);
+            letter-spacing: -0.025em;
+        }
+
+        .section-intro {
+            max-width: 760px;
+            color: var(--muted);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .stat, .card, .report-card {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+        }
+
+        .stat { padding: 20px; }
+
+        .stat strong {
+            display: block;
+            margin-bottom: 2px;
+            color: #fff;
+            font-size: 1.65rem;
+        }
+
+        .stat span { color: var(--muted); font-size: 0.86rem; }
+
+        .report-card {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, #14203a, #111827 68%);
+        }
+
+        .report-card h3,
+        .case-card h3 { color: #fff; }
+
+        .report-card p { color: var(--muted); }
+
+        .report-meta {
+            display: grid;
+            align-content: start;
+            gap: 12px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(10, 15, 28, 0.55);
+        }
+
+        .report-meta span { color: var(--muted); font-size: 0.86rem; }
+        .report-meta strong { color: var(--blue-soft); }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            margin-top: 8px;
+            padding: 11px 15px;
+            border: 1px solid rgba(96, 165, 250, 0.65);
+            border-radius: 8px;
+            color: #fff;
+            background: #1d4ed8;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .button:hover { background: #2563eb; }
+
+        .method-grid, .case-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .method-grid { grid-template-columns: repeat(5, 1fr); }
+        .case-grid { grid-template-columns: repeat(2, 1fr); }
+
+        .card { padding: 24px; }
+
+        .method-number {
+            display: inline-grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            margin-bottom: 18px;
+            border-radius: 50%;
+            color: #0a0f1c;
+            background: var(--blue-soft);
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+
+        .card h3 { margin-bottom: 8px; font-size: 1rem; }
+        .card p { margin-bottom: 0; color: var(--muted); font-size: 0.92rem; }
+
+        .case-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+
+        .case-topline {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .case-id { color: var(--blue); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; }
+        .platform { color: var(--green); font-size: 0.78rem; font-weight: 700; }
+        .case-card > p { color: var(--muted); }
+
+        .chain {
+            margin: 8px 0 18px;
+            padding: 12px 14px;
+            border-left: 3px solid #3b82f6;
+            border-radius: 0 8px 8px 0;
+            background: #0d1627;
+            color: #cbd5e1;
+            font-size: 0.88rem;
+        }
+
+        .case-card h4 {
+            margin: 0 0 6px;
+            color: #dbeafe;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .case-card ul {
+            margin: 0 0 0 18px;
+            padding: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .case-card li + li { margin-top: 5px; }
+
+        .document-link {
+            margin-top: auto;
+            padding-top: 22px;
+            color: var(--blue-soft);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .document-link:hover { color: #fff; }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 10px;
+            border: 1px solid #2d405d;
+            border-radius: 999px;
+            color: var(--blue-soft);
+            background: #111c30;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid #1f2937;
+            color: #6b7280;
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 900px) {
+            .stats, .method-grid { grid-template-columns: repeat(2, 1fr); }
+            .report-card { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 650px) {
+            .container { width: min(100% - 36px, 1120px); }
+            .hero { padding-top: 68px; }
+            .stats, .method-grid, .case-grid { grid-template-columns: 1fr; }
+            .report-card, .card { padding: 22px; }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-links">
+            <a href="index.html">Home</a>
+            <a href="cybersecurity.html" aria-current="page">Cybersecurity</a>
+            <a href="ai.html">AI &amp; ML</a>
+            <a href="software.html">Software</a>
+            <a href="infrastructure.html">Infrastructure</a>
+            <a href="experience.html">Experience</a>
+            <a href="hackathons.html">Hackathons</a>
+            <a href="certifications.html">Certifications</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="eyebrow">Controlled lab portfolio</div>
+            <h1>Penetration Testing Lab Series</h1>
+            <p>
+                A documented series of Windows and Linux security assessments covering reconnaissance,
+                service enumeration, controlled exploitation, privilege analysis, impact assessment, and remediation.
+            </p>
+            <div class="notice">
+                <span aria-hidden="true">&#128274;</span>
+                <div><strong>Authorised environments only.</strong> Every case study was completed in isolated lab targets for educational assessment. The summaries focus on defensive lessons and remediation; the linked PDFs contain the original evidence and documentation.</div>
+            </div>
+
+            <div class="stats" aria-label="Lab series overview">
+                <div class="stat"><strong>4</strong><span>Focused case studies</span></div>
+                <div class="stat"><strong>2</strong><span>Operating-system families</span></div>
+                <div class="stat"><strong>5</strong><span>Assessment phases</span></div>
+                <div class="stat"><strong>50</strong><span>Pages in the full report</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <div class="section-label">Assessment report</div>
+            <h2>Windows &amp; Linux penetration test report</h2>
+            <div class="report-card">
+                <div>
+                    <h3>Zephyr &amp; Odessa controlled assessment</h3>
+                    <p>
+                        A 50-page assessment report documenting reconnaissance, enumeration, controlled exploitation,
+                        privilege-escalation analysis, risk ratings, evidence, and remediation for a Windows IIS target
+                        and a Linux services target.
+                    </p>
+                    <p>
+                        The report highlights the defensive impact of anonymous file-transfer access, web-root write
+                        permissions, insecure network file shares, exposed credentials, and unpatched privilege-escalation paths.
+                    </p>
+                    <a class="button" href="assets/documents/clean%20versions/Pen%20testing%20report.pdf" target="_blank" rel="noopener noreferrer">Open full assessment report (PDF) <span aria-hidden="true">&#8594;</span></a>
+                </div>
+                <div class="report-meta">
+                    <span>Targets</span>
+                    <strong>Zephyr / Windows<br>Odessa / Linux</strong>
+                    <span>Evidence included</span>
+                    <strong>Findings, impact, remediation, and appendix</strong>
+                    <span>Scope</span>
+                    <strong>Authorised lab network</strong>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-label">Methodology</div>
+            <h2>From attack surface to remediation</h2>
+            <p class="section-intro">
+                Each assessment follows a structured workflow adapted for controlled lab environments, with the goal of validating risk and translating technical findings into clear corrective actions.
+            </p>
+            <div class="method-grid">
+                <article class="card"><span class="method-number">01</span><h3>Plan &amp; scope</h3><p>Define authorised targets, objectives, and assessment boundaries.</p></article>
+                <article class="card"><span class="method-number">02</span><h3>Reconnaissance</h3><p>Map the exposed attack surface, services, versions, and likely entry points.</p></article>
+                <article class="card"><span class="method-number">03</span><h3>Enumeration</h3><p>Investigate reachable services, permissions, shares, accounts, and configurations.</p></article>
+                <article class="card"><span class="method-number">04</span><h3>Validation</h3><p>Validate findings in a controlled setting and assess achievable impact.</p></article>
+                <article class="card"><span class="method-number">05</span><h3>Report &amp; remediate</h3><p>Document evidence, risk, and practical remediation priorities.</p></article>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-label">Case studies</div>
+            <h2>Documented lab assessments</h2>
+            <p class="section-intro">Each case study has a concise public summary here and its original PDF write-up for the full technical evidence.</p>
+
+            <div class="case-grid">
+                <article class="card case-card">
+                    <div class="case-topline"><span class="case-id">CASE STUDY 01</span><span class="platform">WINDOWS / IIS</span></div>
+                    <h3>Windows target: IIS &amp; token impersonation</h3>
+                    <p>Assessed how anonymous file-transfer access and a web-root mapping could expose an IIS host to remote code execution and service-account privilege risks.</p>
+                    <div class="chain">Anonymous FTP access <span aria-hidden="true">&#8594;</span> web-root file upload <span aria-hidden="true">&#8594;</span> IIS application context <span aria-hidden="true">&#8594;</span> token-privilege assessment</div>
+                    <h4>Defensive lessons</h4>
+                    <ul>
+                        <li>Separate upload locations from executable web roots.</li>
+                        <li>Disable anonymous FTP and apply strict ACLs.</li>
+                        <li>Remove unnecessary impersonation privileges and disable unneeded services.</li>
+                    </ul>
+                    <a class="document-link" href="assets/documents/clean%20versions/Penetration%20Testing%20Lab%20Series%20-%20Case%20Study%2001_%20Windows%20Target%20%28IIS%20%26%20Token%20Impersonation%29.pdf" target="_blank" rel="noopener noreferrer">Read case study PDF <span aria-hidden="true">&#8594;</span></a>
+                </article>
+
+                <article class="card case-card">
+                    <div class="case-topline"><span class="case-id">CASE STUDY 02</span><span class="platform">LINUX / APACHE</span></div>
+                    <h3>Linux host: file transfer, web access &amp; sudo controls</h3>
+                    <p>Investigated a Linux application host with a non-standard file-transfer service, an exposed web path, and a privileged backup workflow with unsafe directory permissions.</p>
+                    <div class="chain">High-port service discovery <span aria-hidden="true">&#8594;</span> web-service foothold <span aria-hidden="true">&#8594;</span> local permission review <span aria-hidden="true">&#8594;</span> sudo-policy impact</div>
+                    <h4>Defensive lessons</h4>
+                    <ul>
+                        <li>Audit high-numbered services; obscurity is not a control.</li>
+                        <li>Restrict write access to privileged script directories.</li>
+                        <li>Do not grant passwordless sudo for mutable application scripts.</li>
+                    </ul>
+                    <a class="document-link" href="assets/documents/clean%20versions/Penetration%20Testing%20Lab%20Series%20-%20Case%20Study%2002_%20Linux%20Host%20Exploitation.pdf" target="_blank" rel="noopener noreferrer">Read case study PDF <span aria-hidden="true">&#8594;</span></a>
+                </article>
+
+                <article class="card case-card">
+                    <div class="case-topline"><span class="case-id">CASE STUDY 03</span><span class="platform">LEGACY LINUX</span></div>
+                    <h3>Legacy host: exposed shares &amp; patch-management risk</h3>
+                    <p>Documented the compounding risk of unrestricted NFS exports, an internet-facing legacy CGI component, and an obsolete Linux kernel in a controlled legacy environment.</p>
+                    <div class="chain">NFS share discovery <span aria-hidden="true">&#8594;</span> legacy web-component exposure <span aria-hidden="true">&#8594;</span> local kernel-risk validation <span aria-hidden="true">&#8594;</span> root-impact assessment</div>
+                    <h4>Defensive lessons</h4>
+                    <ul>
+                        <li>Patch legacy application and kernel components promptly.</li>
+                        <li>Restrict NFS exports to trusted hosts and enforce root squashing.</li>
+                        <li>Retire unsupported infrastructure wherever possible.</li>
+                    </ul>
+                    <a class="document-link" href="assets/documents/clean%20versions/Penetration%20Testing%20Lab%20Series%20-%20Case%20Study%2003_%20Legacy%20Host%20Exploitation.pdf" target="_blank" rel="noopener noreferrer">Read case study PDF <span aria-hidden="true">&#8594;</span></a>
+                </article>
+
+                <article class="card case-card">
+                    <div class="case-topline"><span class="case-id">CASE STUDY 04</span><span class="platform">MULTI-STAGE LINUX</span></div>
+                    <h3>Multi-stage Linux infrastructure assessment</h3>
+                    <p>Explored how several individually weak controls—exposed keys, weak credential storage, internal management access, and insecure automation—could be chained across a multi-user Linux host.</p>
+                    <div class="chain">Exposed network share <span aria-hidden="true">&#8594;</span> credential exposure <span aria-hidden="true">&#8594;</span> internal-service access <span aria-hidden="true">&#8594;</span> multi-stage privilege analysis</div>
+                    <h4>Defensive lessons</h4>
+                    <ul>
+                        <li>Keep SSH keys and credential stores out of shared network paths.</li>
+                        <li>Isolate management interfaces and enforce strong authentication.</li>
+                        <li>Harden cron jobs, sudo rules, and internal application inputs.</li>
+                    </ul>
+                    <a class="document-link" href="assets/documents/clean%20versions/Penetration%20Testing%20Lab%20Series%20-%20Case%20Study%2004_%20Multi-Stage%20Linux%20Infrastructure.pdf" target="_blank" rel="noopener noreferrer">Read case study PDF <span aria-hidden="true">&#8594;</span></a>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-label">Skills demonstrated</div>
+            <h2>Technical and reporting focus</h2>
+            <div class="skills" aria-label="Skills demonstrated across the lab series">
+                <span class="tag">Nmap reconnaissance</span>
+                <span class="tag">Service enumeration</span>
+                <span class="tag">Windows IIS assessment</span>
+                <span class="tag">Linux hardening</span>
+                <span class="tag">NFS &amp; SMB review</span>
+                <span class="tag">Web-service security</span>
+                <span class="tag">Privilege analysis</span>
+                <span class="tag">Risk assessment</span>
+                <span class="tag">Remediation reporting</span>
+                <span class="tag">Evidence documentation</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">&copy; 2026 Zernish Nazir &middot; Penetration Testing Lab Series</div>
+    </footer>
+</body>
+</html>
