@@ -121,6 +121,26 @@
             color: #ffffff;
         }
 
+        .project-details {
+            margin-top: 14px;
+        }
+
+        .project-details strong {
+            color: #e5e7eb;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            color: #ffffff;
+        }
+
         footer {
             border-top: 1px solid #1f2937;
             margin-top: 50px;
@@ -294,10 +314,23 @@
         <div class="card project">
             <h3>Hybrid AES-RSA Secure Communication System</h3>
             <p>
-                A cryptography project implementing a hybrid encryption
-                approach combining AES symmetric encryption with RSA
-                asymmetric encryption.
+                An interactive Java command-line project demonstrating hybrid
+                encryption end to end. It encrypts a message with a randomly
+                generated AES session key, uses RSA modular arithmetic to
+                protect that key, reconstructs it, and verifies decryption.
             </p>
+            <div class="project-details">
+                <p><strong>Concepts demonstrated:</strong> AES-128 encryption, IV generation with SecureRandom, RSA key mathematics, modular inverses, and byte-to-hexadecimal transformations.</p>
+                <p><strong>Educational focus:</strong> The program deliberately displays intermediate values so the hybrid-encryption workflow is visible. It is a learning demonstration, not a production cryptography system.</p>
+            </div>
+            <div class="tags">
+                <span class="tag">Java</span>
+                <span class="tag">AES-128</span>
+                <span class="tag">RSA</span>
+                <span class="tag">SecureRandom</span>
+                <span class="tag">BigInteger</span>
+            </div>
+            <a class="project-link" href="https://github.com/zernishh/hybrid-encryption-java" target="_blank" rel="noopener noreferrer">View the source code on GitHub &rarr;</a>
         </div>
 
     </section>
